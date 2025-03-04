@@ -1,0 +1,51 @@
+defaults:
+  timesteps: 100000
+  learning_rate: 0.001
+  batch_size: 64
+  gamma: 0.99
+
+domains:
+  portfolio_management:
+    n_assets: 5
+    obs_dim: 10
+    action_dim: 3
+    window_size: 10
+    initial_balance: 100000
+    transaction_cost: 0.001
+    max_drawdown: 0.3
+
+  algorithmic_trading:
+    obs_dim: 20
+    action_dim: 5
+    initial_balance: 50000
+    transaction_cost: 0.0003
+
+  options_pricing:
+    obs_dim: 8
+    action_dim: 2
+    volatility: 0.2
+
+  market_making:
+    obs_dim: 15
+    action_dim: 4
+    spread_cost: 0.0001
+
+algorithms:
+  dqn:
+    policy: "MlpPolicy"
+    learning_rate: 0.0005
+    buffer_size: 50000
+
+  ppo:
+    policy: "MlpPolicy"
+    learning_rate: 0.0003
+    clip_range: 0.2
+
+  ddpg:
+    policy: "MlpPolicy"
+    learning_rate: 0.001
+    noise_std: 0.1
+
+  rrl:
+    policy: "CustomRRLPolicy"
+    learning_rate: 0.0001

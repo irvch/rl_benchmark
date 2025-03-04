@@ -1,0 +1,19 @@
+conda name: benchmark
+channels: 
+  - defaults
+  - conda-forge 
+dependencies:
+  - python=3.9
+  - pip>=23.0
+  - numpy=1.24
+  - pandas=2.0.3
+  - pytorch_lightning=2.0.0
+  - matplotlib=3.7.1
+  - cvxopt
+  - scipy=1.9
+  - PySocks=1.6.8
+  - SocksiPy_branch=1.1
+  - tensorboardX
+  - pip:
+    - torch=2.0.0
+    - gym=0.22.0
