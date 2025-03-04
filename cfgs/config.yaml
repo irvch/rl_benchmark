@@ -13,6 +13,7 @@ domains:
     initial_balance: 100000
     transaction_cost: 0.001
     max_drawdown: 0.3
+    algorithm: "ppo"
 
   algorithmic_trading:
     obs_dim: 20

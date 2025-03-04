@@ -1,6 +1,6 @@
 import gymnasium as gym
 import numpy as np
-from gym import spaces
+from gymnasium import spaces
 
 class FinancialRLBaseEnv(gym.Env):
     """
@@ -14,7 +14,7 @@ class FinancialRLBaseEnv(gym.Env):
 
         # Extract parameters from config
         self.config = config
-        self.time_steps = config.get("time_steps", 1000)
+        self.timesteps = config.get("timesteps", 10000)
         self.initial_balance = config.get("initial_balance", 10000)
         self.transaction_cost = config.get("transaction_cost", 0.001)
 

@@ -24,14 +24,15 @@ def backtest(domain, algorithm, config, model_path):
     model = ALGO_MAP[algorithm].load(model_path)
 
     # Run backtest
-    obs = env.reset()
+    obs, _ = env.reset()
     portfolio_values = [env.portfolio_value]
 
-    for _ in range(config["time_steps"]):
+    timesteps = config.get("timesteps", 1000)
+    for _ in range(timesteps):
         action, _ = model.predict(obs)
-        obs, reward, done, _ = env.step(action)
+        obs, reward, terminated, truncated, _ = env.step(action)
         portfolio_values.append(env.portfolio_value)
-        if done:
+        if terminated or truncated:
             break
 
     # Plot results
@@ -52,6 +53,6 @@ if __name__ == "__main__":
         "window_size": 10,
         "initial_balance": 100000,
         "transaction_cost": 0.001,
-        "time_steps": 1000
+        "timesteps": 1000
     }
     backtest("{domain}", "{algorithm}", config, "models/{algorithm}_{domain}.zip")
